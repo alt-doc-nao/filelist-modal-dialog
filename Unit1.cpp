@@ -26,10 +26,13 @@ TBitmap* gleft = new TBitmap();
 TBitmap* gright = new TBitmap();
 
 String lastposition;
+String dumpfilebase;
 
 
 void DispJPS(String filename)
 {
+
+	dumpfilebase = filename;
 
 	original->LoadFromFile(filename);
 	origbitmap->Assign(original);
@@ -109,6 +112,7 @@ void DispMPO(String filename)
 	FILE* fp;
 	int found = 0;
 
+	dumpfilebase = filename;
 	fp = fopen(AnsiString(filename).c_str(),"rb");
 	if(!fp){
 	  ShowMessage("file open error\n");
@@ -209,3 +213,27 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm1::DumpClick(TObject *Sender)
+{
+/*
+BaseName := ChangeFileExt(ExtractFileName(FilePath), '');
+Writeln('Base name without extension: ', BaseName); // Output: file
+*/
+
+	String outbase = ChangeFileExt(ExtractFileName(dumpfilebase),"");
+
+	if( Cross->Checked ){
+		Image1->Picture->SaveToFile(outbase + "_R.jpg");
+		Image2->Picture->SaveToFile(outbase + "_L.jpg");
+
+	}
+	else {
+		Image2->Picture->SaveToFile(outbase + "_R.jpg");
+		Image1->Picture->SaveToFile(outbase + "_L.jpg");
+
+    }
+
+}
+//---------------------------------------------------------------------------
+

@@ -19,7 +19,9 @@ __published:	// IDE で管理されるコンポーネント
 	TImage *Image2;
 	TCheckBox *Cross;
 	TLabel *Label2;
+	TButton *Dump;
 	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall DumpClick(TObject *Sender);
 private:	// ユーザー宣言
 public:		// ユーザー宣言
 	__fastcall TForm1(TComponent* Owner);
