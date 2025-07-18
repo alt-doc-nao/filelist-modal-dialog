@@ -27,7 +27,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	if( lastposition != "" )
 		DirectoryListBox1->Directory = lastposition;
 	else
-		DirectoryListBox1->Directory = "C:\\Users\\docna\\Downloads\\";
+		DirectoryListBox1->Directory = "C:\\Users\\";
 }
 
 //---------------------------------------------------------------------------
